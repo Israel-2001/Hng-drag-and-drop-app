@@ -21,6 +21,14 @@ const GalleryItem = ({ image, index, moveImage }) => {
 
   const [isHovered, setIsHovered] = useState(false);
 
+  const handleTouchStart = () => {
+    setIsHovered(true);
+  };
+
+  const handleTouchEnd = () => {
+    setIsHovered(false);
+  };
+
   return (
     <div
       ref={(node) => {
@@ -33,8 +41,8 @@ const GalleryItem = ({ image, index, moveImage }) => {
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onTouchStart={() => setIsHovered(true)}
-      onTouchEnd={() => setIsHovered(false)}
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <img src={image.url} alt={image.title} />
       <div className="image-tags">
